@@ -37,10 +37,11 @@ public class UserDaoV4 {
 
         final ResultSet rs = ps.executeQuery();
         rs.next();
-        User user = new User();
-        user.setId(rs.getString("id"));
-        user.setName(rs.getString("name"));
-        user.setPassword(rs.getString("password"));
+        User user = User.builder()
+                .id(rs.getString("id"))
+                .name(rs.getString("name"))
+                .password(rs.getString("password"))
+                .build();
 
         rs.close();
         ps.close();

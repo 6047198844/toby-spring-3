@@ -15,7 +15,7 @@ public class UserDaoV5 {
     }
 
     public void add(User user) throws SQLException {
-        final Connection c = connectionMaker.getConnection();
+        final Connection c = connectionMaker.makeConnection();
         final PreparedStatement ps = c.prepareStatement(
                 "insert into users(id, name, password) values(?,?,?)");
         ps.setString(1, user.getId());
@@ -29,17 +29,18 @@ public class UserDaoV5 {
     }
 
     public User get(String id) throws SQLException {
-        final Connection c = connectionMaker.getConnection();
+        final Connection c = connectionMaker.makeConnection();
         final PreparedStatement ps = c.prepareStatement(
                 "select * from users where id = ?");
         ps.setString(1, id);
 
         final ResultSet rs = ps.executeQuery();
         rs.next();
-        User user = new User();
-        user.setId(rs.getString("id"));
-        user.setName(rs.getString("name"));
-        user.setPassword(rs.getString("password"));
+        User user = User.builder()
+                .id(rs.getString("id"))
+                .name(rs.getString("name"))
+                .password(rs.getString("password"))
+                .build();
 
         rs.close();
         ps.close();

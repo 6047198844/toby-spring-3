@@ -10,10 +10,11 @@ class UserDaoTestV2 {
     void test() throws SQLException {
         UserDaoV6 dao = new DaoFactory().userDaoV6();
 
-        final User user = new User();
-        user.setId("whiteship");
-        user.setName("백기선");
-        user.setPassword("married");
+        final User user = User.builder()
+                .id("whiteship")
+                .name("백기선")
+                .password("married")
+                .build();
 
         dao.add(user);
 
