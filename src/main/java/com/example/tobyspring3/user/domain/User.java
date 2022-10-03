@@ -1,12 +1,12 @@
 package com.example.tobyspring3.user.domain;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @Builder
 public class User {
-    String id;
-    String name;
-    String password;
+    private final String id;
+    private final String name;
+    private final String password;
 }

@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 class UserDaoTest {
+    UserDao dao = new UserDaoV1();
+
     @Test
     void test() throws SQLException {
-        UserDaoV4 dao = new UserDaoV4();
-
         final User user = User.builder()
                 .id("whiteship")
                 .name("백기선")

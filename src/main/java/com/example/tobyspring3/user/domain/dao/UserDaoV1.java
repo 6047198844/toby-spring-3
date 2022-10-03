@@ -4,7 +4,7 @@ import com.example.tobyspring3.user.domain.User;
 
 import java.sql.*;
 
-public class UserDaoV1 {
+public class UserDaoV1 implements UserDao {
     public void add(User user) throws SQLException {
         final Connection c = DriverManager.getConnection(
                 "jdbc:h2:tcp://localhost/~/test", "sa", "");
@@ -19,6 +19,7 @@ public class UserDaoV1 {
         ps.close();
         c.close();
     }
+
     public User get(String id) throws SQLException {
         final Connection c = DriverManager.getConnection(
                 "jdbc:h2:tcp://localhost/~/test", "sa", "");
@@ -28,6 +29,7 @@ public class UserDaoV1 {
 
         final ResultSet rs = ps.executeQuery();
         rs.next();
+
         User user = User.builder()
                 .id(rs.getString("id"))
                 .name(rs.getString("name"))
