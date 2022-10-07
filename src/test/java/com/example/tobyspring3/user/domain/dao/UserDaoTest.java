@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 class UserDaoTest {
-    UserDao dao = new UserDaoV1();
+//    UserDao dao = new UserDaoV1();
+    UserDao dao = new UserDaoV2.NUserDao();
 
     @Test
     void test() throws SQLException {

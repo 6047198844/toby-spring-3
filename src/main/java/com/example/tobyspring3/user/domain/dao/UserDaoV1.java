@@ -6,8 +6,7 @@ import java.sql.*;
 
 public class UserDaoV1 implements UserDao {
     public void add(User user) throws SQLException {
-        final Connection c = DriverManager.getConnection(
-                "jdbc:h2:tcp://localhost/~/test", "sa", "");
+        final Connection c = getConnection();
         final PreparedStatement ps = c.prepareStatement(
                 "insert into users(id, name, password) values(?,?,?)");
         ps.setString(1, user.getId());
@@ -21,8 +20,7 @@ public class UserDaoV1 implements UserDao {
     }
 
     public User get(String id) throws SQLException {
-        final Connection c = DriverManager.getConnection(
-                "jdbc:h2:tcp://localhost/~/test", "sa", "");
+        final Connection c = getConnection();
         final PreparedStatement ps = c.prepareStatement(
                 "select * from users where id = ?");
         ps.setString(1, id);
@@ -41,5 +39,10 @@ public class UserDaoV1 implements UserDao {
         c.close();
 
         return user;
+    }
+    private Connection getConnection() throws SQLException {
+        final Connection c = DriverManager.getConnection(
+                "jdbc:h2:tcp://localhost/~/test", "sa", "");
+        return c;
     }
 }

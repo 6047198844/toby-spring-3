@@ -4,7 +4,7 @@ import com.example.tobyspring3.user.domain.User;
 
 import java.sql.*;
 
-public class UserDaoV2 {
+public abstract class UserDaoV2 implements UserDao{
     public void add(User user) throws SQLException {
         final Connection c = getConnection();
         final PreparedStatement ps = c.prepareStatement(
@@ -39,9 +39,22 @@ public class UserDaoV2 {
 
         return user;
     }
-    private Connection getConnection() throws SQLException {
-        final Connection c = DriverManager.getConnection(
-                "jdbc:h2:tcp://localhost/~/test", "sa", "");
-        return c;
+    protected abstract Connection getConnection() throws SQLException;
+
+    public static class NUserDao extends UserDaoV2 {
+        @Override
+        public Connection getConnection() throws SQLException {
+            // N사 DB connection 생성 코드
+            return DriverManager.getConnection(
+                    "jdbc:h2:tcp://localhost/~/test", "sa", "");
+        }
+    }
+
+    public static class DUserDao extends UserDaoV2 {
+        @Override
+        public Connection getConnection() throws SQLException {
+            // D사 DB connection 생성 코드
+            return null;
+        }
     }
 }
