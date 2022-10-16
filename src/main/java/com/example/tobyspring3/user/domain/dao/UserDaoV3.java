@@ -1,16 +1,18 @@
 package com.example.tobyspring3.user.domain.dao;
 
 import com.example.tobyspring3.user.domain.User;
-import lombok.RequiredArgsConstructor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@RequiredArgsConstructor
-public class UserDaoV6 {
+public class UserDaoV3 implements UserDao{
     private final ConnectionMaker connectionMaker;
+
+    public UserDaoV3(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
+    }
 
     public void add(User user) throws SQLException {
         final Connection c = connectionMaker.makeConnection();

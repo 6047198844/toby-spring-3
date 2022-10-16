@@ -1,11 +1,15 @@
 package com.example.tobyspring3.user.domain.dao;
 
+import org.springframework.context.annotation.Bean;
+
 public class DaoFactory {
-    public UserDaoV6 userDaoV6() {
-        return new UserDaoV6(getConnectionMaker());
+    @Bean
+    public UserDao userDao() {
+        return new UserDaoV4(connectionMaker());
     }
 
-    private static ConnectionMaker getConnectionMaker() {
+    @Bean
+    private ConnectionMaker connectionMaker() {
         return new DConnectionMaker();
     }
 }

@@ -10,7 +10,7 @@ class UserDaoTestV3 {
     @Test
     void test() throws SQLException {
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CounterDaoFactory.class);
-        final UserDaoV6 dao = context.getBean("userDao", UserDaoV6.class);
+        final UserDaoV4 dao = context.getBean("userDao", UserDaoV4.class);
 
         final User user = User.builder()
                 .id("whiteship")

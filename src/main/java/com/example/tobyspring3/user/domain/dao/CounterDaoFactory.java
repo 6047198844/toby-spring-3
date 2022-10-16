@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CounterDaoFactory {
     @Bean
-    public UserDaoV6 userDao() {
-        return new UserDaoV6(connectionMaker());
+    public UserDao userDao() {
+        return new UserDaoV4(connectionMaker());
     }
 
     @Bean
