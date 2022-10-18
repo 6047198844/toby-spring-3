@@ -1,7 +1,9 @@
 package com.example.tobyspring3.user.domain.dao;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class DaoFactory {
     @Bean
     public UserDao userDao() {
@@ -9,7 +11,7 @@ public class DaoFactory {
     }
 
     @Bean
-    private ConnectionMaker connectionMaker() {
+    public ConnectionMaker connectionMaker() {
         return new DConnectionMaker();
     }
 }

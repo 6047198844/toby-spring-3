@@ -4,7 +4,7 @@ import com.example.tobyspring3.user.domain.User;
 
 import java.sql.*;
 
-public class UserDaoV1 implements UserDao {
+public class UserDaoV1 {
     public void add(User user) throws SQLException {
         final Connection c = getConnection();
         final PreparedStatement ps = c.prepareStatement(

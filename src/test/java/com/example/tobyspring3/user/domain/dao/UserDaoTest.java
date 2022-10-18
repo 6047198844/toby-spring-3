@@ -8,8 +8,8 @@ import java.sql.SQLException;
 class UserDaoTest {
 //    UserDao dao = new UserDaoV1();
 //    UserDao dao = new UserDaoV2.NUserDao();
-    UserDao dao = new UserDaoV3(new DConnectionMaker());
-
+//    UserDao dao = new UserDaoV3(new DConnectionMaker());
+    UserDao dao = new DaoFactory().userDao();
 
     @Test
     void test() throws SQLException {

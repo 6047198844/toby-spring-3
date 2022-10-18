@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDaoV3 implements UserDao{
+public class UserDaoV3 {
     private final ConnectionMaker connectionMaker;
 
     public UserDaoV3(ConnectionMaker connectionMaker) {

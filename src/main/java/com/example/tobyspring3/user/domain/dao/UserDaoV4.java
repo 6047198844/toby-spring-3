@@ -46,4 +46,14 @@ public class UserDaoV4 implements UserDao{
 
         return user;
     }
+
+    @Override
+    public void deleteAll() throws SQLException {
+        return;
+    }
+
+    @Override
+    public int getCount() throws SQLException {
+        return 0;
+    }
 }
