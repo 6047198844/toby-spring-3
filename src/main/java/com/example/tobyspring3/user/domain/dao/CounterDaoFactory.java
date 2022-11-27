@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class CounterDaoFactory {
     @Bean
     public UserDao userDao() {
-        return new UserDaoV4(connectionMaker());
+        return new UserDaoV3(connectionMaker());
     }
 
     @Bean

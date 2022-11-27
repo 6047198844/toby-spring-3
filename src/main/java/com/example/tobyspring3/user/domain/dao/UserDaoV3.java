@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDaoV3 {
+public class UserDaoV3 implements UserDao {
     private final ConnectionMaker connectionMaker;
 
     public UserDaoV3(ConnectionMaker connectionMaker) {
@@ -47,5 +47,15 @@ public class UserDaoV3 {
         c.close();
 
         return user;
+    }
+
+    @Override
+    public void deleteAll() throws SQLException {
+        return;
+    }
+
+    @Override
+    public int getCount() throws SQLException {
+        return 0;
     }
 }
